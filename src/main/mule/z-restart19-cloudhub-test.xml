@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="5939fd5e-1969-4bda-847e-e04fbdb1839b" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="z-restart19-cloudhub-testFlow" doc:id="76484ef7-94dd-430c-a8fd-9c0ebb58736b" >
+		<http:listener doc:name="Listener" doc:id="6bee78fd-272e-4fda-bb24-4b53d928bd71" config-ref="HTTP_Listener_config" path="chtest"/>
+		<set-payload value="#['Hello ' ++ attributes.queryParams.name as String ++ ' welcome to cloud hub']" doc:name="Set Payload" doc:id="303e9ef5-feac-49d7-a770-c11256deaeb4" mimeType="text/plain"/>
+	</flow>
+</mule>
